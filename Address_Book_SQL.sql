@@ -24,4 +24,12 @@ Insert into Address_Book_Table values('Harish','Krishnan','Jew Town','Cochin','K
 Insert into Address_Book_Table values('Vedhashni','Velmurugan','Madipakkam','Chennai','TamilNadu',60091,8939620291,'vedha39@gmail.com');
 Insert into Address_Book_Table values('Ashok','Kumar','ECR','Chennai','TamilNadu',600024,9867423567,'ashok32@gmail.com');
 
+--------------UC4 Editing the existing contact------------------------
+update Address_Book_Table set EmailId='harsh32@gmail.com' where FirstName='Harish';
+
+update Address_Book_Table set Address='Mambakkam' where FirstName='Kishore';
+
+update Address_Book_Table set Phonenum=7390802345 where FirstName='Swetha';
+
+select * from Address_Book_Table;
 
