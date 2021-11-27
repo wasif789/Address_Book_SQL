@@ -77,6 +77,11 @@ select * from Address_Book_Table;
 
 Select count(*)as CountType, RelationType  from Address_Book_Table group by RelationType;
 
-
+--------UC11 Create Contact for both Family and Friends Type --------
+select AddressBookName,FirstName,LastName,Address,City,StateName,ZipCode,PhoneNum,EmailId,ContactTypeName
+from Address_Book
+Full JOIN Contact_Person on Address_Book.AddressBookID=Contact_Person.AddressBook_ID 
+Full JOIN Relation_Type on Relation_Type.Contact_ID=Contact_Person.ContactID
+Full JOIN Contact_Type on Relation_Type.ContactType_ID=Contact_Type.ContactTypeID;
 
 
