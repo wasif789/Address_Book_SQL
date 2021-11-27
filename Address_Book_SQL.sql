@@ -47,4 +47,30 @@ Select Count(*) As Count,StateName,City from Address_Book_Table group by StateNa
 
 select FirstName,LastName from Address_Book_Table where City='Chennai' order by FirstName;
 
+-------------------UC9 Adding name and relationtype columns------------------------------
+
+alter table Address_Book_Table
+add AddressBookName varchar(50),
+RelationType varchar(50);
+
+
+update Address_Book_Table
+set AddressBookName='FriendName',RelationType='Friend'
+where FirstName='Ashok';
+
+update Address_Book_Table
+set AddressBookName='Cousin',RelationType='Family'
+where Address='Madipakkam';
+
+update Address_Book_Table
+set AddressBookName='Manager',RelationType='Profession'
+where ZipCode=600082;
+
+update Address_Book_Table
+set AddressBookName='Cousin',RelationType='Family'
+where Address='Mambakkam';
+
+
+select * from Address_Book_Table;
+
 
