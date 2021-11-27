@@ -143,4 +143,32 @@ insert into Relation_Type values
 --Retrieve the data
 Select * from Relation_Type;
 
+-----UC13 Ensure all retrieve queries done----
+----UC6--->Retrieve Person Belonging to  City or State
+select AddressBookName,FirstName,LastName,Address,City,StateName,ZipCode,PhoneNum,EmailId,ContactTypeName
+from Contact_Person 
+INNER JOIN  Address_Book on Address_Book.AddressBookID=Contact_Person.AddressBook_ID and (City='Chennai' or StateName='TamilNadu')
+INNER JOIN Relation_Type on Relation_Type.Contact_ID=Contact_Person.ContactID
+INNER JOIN Contact_Type on Relation_Type.ContactType_ID=Contact_Type.ContactTypeID;
+----UC7--->Size of state and city
+select Count(*)As CountOfStateAndCity ,StateName,City
+from Contact_Person 
+INNER JOIN  Address_Book on Address_Book.AddressBookID=AddressBook_ID 
+Group by StateName,City;
+-----UC8--->Retrieve the person data entries sorted alphabetically
+select AddressBookName,FirstName,LastName,Address,City,StateName,ZipCode,PhoneNum,EmailId,ContactTypeName
+from Contact_Person 
+INNER JOIN  Address_Book on Address_Book.AddressBookID=AddressBook_ID 
+INNER JOIN Relation_Type on Relation_Type.Contact_Id=Contact_Person.ContactID
+INNER JOIN Contact_Type on Relation_Type.ContactType_ID=Contact_Type.ContactTypeID
+order by(FirstName);
+---	UC9--->Get Number Of contact persons by type
+select Count(*) as NumberOfContacts,Contact_Type.ContactTypeName
+from Contact_Person 
+INNER JOIN  Address_Book on Address_Book.AddressBookID=Contact_Person.AddressBook_ID
+INNER JOIN Relation_Type on Relation_Type.Contact_ID=Contact_Person.ContactID
+INNER JOIN Contact_Type on Relation_Type.ContactType_ID=Contact_Type.ContactTypeID
+Group by ContactTypeName;
+
+
 
