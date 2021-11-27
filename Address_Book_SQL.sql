@@ -43,5 +43,8 @@ Select FirstName,LastName from Address_Book_Table where City='Chennai' or StateN
 --------------------UC7 Count of city and state---------------------
 
 Select Count(*) As Count,StateName,City from Address_Book_Table group by StateName,City;
+-------------------UC8 Sort the name by alphebatically----------------------
+
+select FirstName,LastName from Address_Book_Table where City='Chennai' order by FirstName;
 
 
