@@ -40,4 +40,8 @@ delete from Address_Book_Table where FirstName='Harish' and LastName='Krishnan';
 --------------------UC6 Retrive the data by city or state ---------------------
 
 Select FirstName,LastName from Address_Book_Table where City='Chennai' or StateName='TamilNadu';
+--------------------UC7 Count of city and state---------------------
+
+Select Count(*) As Count,StateName,City from Address_Book_Table group by StateName,City;
+
 
