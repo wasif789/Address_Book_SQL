@@ -33,3 +33,7 @@ update Address_Book_Table set Phonenum=7390802345 where FirstName='Swetha';
 
 select * from Address_Book_Table;
 
+------------------UC5 Delete the contact-------------------
+
+delete from Address_Book_Table where FirstName='Harish' and LastName='Krishnan';
+
