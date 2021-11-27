@@ -84,4 +84,63 @@ Full JOIN Contact_Person on Address_Book.AddressBookID=Contact_Person.AddressBoo
 Full JOIN Relation_Type on Relation_Type.Contact_ID=Contact_Person.ContactID
 Full JOIN Contact_Type on Relation_Type.ContactType_ID=Contact_Type.ContactTypeID;
 
+--------------------------UC12 ER-Diagram-------------------
+
+--Create Address_Book table
+create table Address_Book(
+AddressBookID int identity(1,1) primary key,
+AddressBookName varchar(100)
+);
+---Insert the values in Address_Book
+Insert into Address_Book values ('Swetha'),('Kishore');
+---Retrieve the data
+select * from Address_Book;
+--Create Contact_Person
+create table Contact_Person(
+AddressBook_ID int,
+ContactID int identity(1,1) primary key,
+FirstName varchar(100),
+LastName varchar(100),
+Address varchar(250),
+City varchar(100),
+StateName varchar(100),
+ZipCode BigInt,
+PhoneNum BigInt,
+EmailId varchar(200),
+foreign key (AddressBook_ID) references Address_Book(AddressBookID));
+--Insert the values 
+Insert into Contact_Person values
+(1,'Dinesh','Sankar','Fort Road','Bangalore','Karnataka',600158,8939478157,'dinesh456@gmail.com'),
+(2,'Raj','Kumar','Adam Street','Chennai','Tamil Nadu',600015,9847581547,'raj23@gmail.com'),
+(2,'Akshaya','Raju','South Marret Street.','Coimbatore','Tamil Nadu',600145,874875197,'akshaya@23gmail.com'),
+(1,'Atchaya','Vishal','Gandhi Bazaar','Cochin','Kerala',601454,7847595157,'atchu2000@gmail,com');
+--Retrieve the data
+select * from Contact_Person;
+---Create contact_type table
+create table Contact_Type
+(ContactTypeID int identity(1,1) primary key,
+ContactTypeName varchar(100)
+);
+---Insert the values in contat_type
+Insert into Contact_Type values
+('Family'),('Friends'),('Profession');
+--Retrieve the data
+Select * from Contact_Type;
+---Create relation type table
+create Table Relation_Type(
+ContactType_ID int,
+Contact_ID int,
+foreign key (ContactType_ID) references Contact_Type(ContactTypeID),
+foreign key (Contact_ID) references Contact_Person(ContactID)
+);
+---Insert the values in relation_type
+insert into Relation_Type values
+(1,3),
+(2,3),
+(3,1),
+(1,2),
+(2,4);
+--Retrieve the data
+Select * from Relation_Type;
+
 
